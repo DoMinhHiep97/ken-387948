@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Fast Good Cheap</title>
+    <meta name="description" content="You want a Fast, Good, and Cheap project?">
+
+
+</head>
+
+<body>
+<style>
+    body
+    {
+        margin: 0 auto; /* canh bố cục đều 2 bên */
+        padding: 0;
+        width: 400px;
+    }
+</style>
+<script>
+    let div = document.createElement('div');// giống <div> trong <body>
+    div.id = 'container';
+    div.style.width = '350px';
+    div.style.height = '150px';
+    div.style.border = '1px solid #333';
+    div.style.backgroundColor = 'yellow';
+    let txtFast = document.createElement('input');//<input>
+    txtFast.type = 'checkbox';
+    txtFast.id = 'fast';
+    let lblFast = document.createElement('label');//<label>
+    lblFast.innerHTML = 'Ngu Dốt';
+    let txtGood = document.createElement('input');
+    txtGood.type = 'checkbox';
+    txtGood.id = 'good';
+    let lblGood = document.createElement('label');
+    lblGood.innerHTML = 'Phá Hoại';
+    let txtCheap = document.createElement('input');
+    txtCheap.type = 'checkbox';
+    txtCheap.id = 'cheap';
+    let lblCheap = document.createElement('label');
+    lblCheap.innerHTML = 'NHiệt Tình';
+    div.appendChild(txtFast);
+    div.appendChild(lblFast);
+    div.appendChild(txtGood);
+    div.appendChild(lblGood);
+    div.appendChild(txtCheap);
+    div.appendChild(lblCheap);
+    document.getElementsByTagName('body')[0].appendChild(div);// người ta tạo div trong script rồi dùng cái này đưa vào <body>
+
+    let checked = [];
+    let chk = document.querySelectorAll('input[type="checkbox"]');
+    [].forEach.call(chk, function (checkbox) {
+        checkbox.addEventListener('change', function (e) {
+            if (checkbox.checked && checked.length === 2) {
+                let uncheckTarget = checked[Math.floor(Math.random() * checked.length)];
+                uncheckTarget.checked = false;
+            }
+            checked = document.querySelectorAll('input[type="checkbox"]:checked');
+        });
+    });
+</script>
+
+
+</body>
+</html>
